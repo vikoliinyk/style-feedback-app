@@ -5,7 +5,7 @@ from openai import OpenAI
 import cv2
 import numpy as np
 
-class StyleAnalyzer:
+class StyleAnalyser:
     def __init__(self, api_key=None):
         self.client = OpenAI(api_key=api_key or os.environ.get("OPENAI_API_KEY"))
     
@@ -80,14 +80,15 @@ class StyleAnalyzer:
           "color_analysis": "Analysis of the color scheme",
           "pattern": "Description of patterns if present",
           "occasions": ["Suitable occasions"],
-          "suggestions": ["2-4 specific style improvement suggestions"]
+          "rating": "Overall rating of the outfit"
+          "suggestions": ["2-4 specific style improvement suggestions"],
         }
         """
         
         # Call the OpenAI API
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4-vision-preview",
+                model="gpt-4o-mini",
                 messages=[
                     {
                         "role": "user",
