@@ -7,7 +7,13 @@ from werkzeug.utils import secure_filename
 from image_analyser import StyleAnalyser
 
 app = Flask(__name__)
-CORS(app)
+allowed_origins = os.environ.get('ALLOWED_ORIGIN', '*')
+
+if allowed_origins != '*' and ',' in allowed_origins:
+    allowed_origins = [origin.strip() for origin in allowed_origins.split(',')]
+
+CORS(app, origins=allowed_origins)
+
 print("Starting the Flask application...")
 
 # Configure upload folder
