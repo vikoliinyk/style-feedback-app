@@ -46,15 +46,7 @@ function ResultsDisplay({ results, imageUrl }) {
               <div className="result-value">{results.fit}</div>
             </div>
           )}
-          
-          {/* Color Analysis */}
-          {results.color_analysis && (
-            <div className="result-item">
-              <h3 className="result-label">Color Analysis</h3>
-              <div className="result-value">{results.color_analysis}</div>
-            </div>
-          )}
-          
+
           {/* Dominant Colors */}
           {results.dominant_colors && results.dominant_colors.length > 0 && (
             <div className="result-item">
@@ -69,6 +61,14 @@ function ResultsDisplay({ results, imageUrl }) {
                   />
                 ))}
               </div>
+            </div>
+          )}
+          
+          {/* Color Analysis */}
+          {results.color_analysis && (
+            <div className="result-item">
+              <h3 className="result-label">Color Analysis</h3>
+              <div className="result-value">{results.color_analysis}</div>
             </div>
           )}
           
