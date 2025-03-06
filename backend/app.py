@@ -47,6 +47,7 @@ def analyze_style():
             
             # Format response for frontend
             response = {
+                'rating': analysis['rating'],
                 'overall_style': analysis['style'],
                 'fit': analysis['fit'],
                 'color_analysis': analysis['color_analysis'],
@@ -66,6 +67,10 @@ def analyze_style():
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'healthy'}), 200
+
+@app.route('/api/test', methods=['GET'])
+def test():
+    return jsonify({"message": "API is working"})
 
 if __name__ == '__main__':
     app.run(debug=True)
